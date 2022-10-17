@@ -25,7 +25,7 @@ if __name__ == "__main__":
     if not os.path.exists(prefix):
         os.makedirs(prefix)
     
-    sampling_timesteps = args.ddim_timesteps if args.sampling_method == "ddpm" else None
+    sampling_timesteps = args.ddim_timesteps if args.sampling_method == "ddim" else None
 
     model = Unet(
         dim=64,

@@ -92,6 +92,9 @@ os.environ["PYTORCH_JIT"] = "0"
 ```
 2. GAN losses are pretty much meaningless! If you want to understand if your network is learning, visualize the samples. The FID score should generally be going down as well.
 3. Don't change the hyper-parameters at all, they have been carefully tuned to ensure the networks will train stably, if things aren't working, it is a bug in your code.
+4. Here is a sample image from LS-GAN at the end of training. The other networks may have variations but should look similar: 
+
+<img src="./gan/sample_images/samples_30000.png" width="400px"><img>
 
 ## Task 2: Variational Autoencoders (30 points)
 
@@ -113,7 +116,7 @@ In train.py, fill in the TODOs where 2.1.2 is mentioned. This includes the loss 
 #### Question 2.2.1: Architecture
 In model.py. fill in the TODOs where 2.2.1 is mentioned. This only includes the fc layer of the VAEEncoder, and the forward pass through the network.
 
-#### Question 2.2.2: Loss function 
+#### Question 2.2.2: Loss function
 Fill in the recon_loss and kl_loss that make up the total loss for the VAE, under the TODO where 2.2.2 is mentioned. Important - remember to only average across the batch dimension. 
 
 #### Running the VAE
@@ -136,6 +139,9 @@ Another way to improve the quality of samples is to use an annealing scheme for 
 
 ### Debugging Tips
 1. Make sure the autoencoder can produce good-quality reconstructions before moving on to the VAE. While the VAE reconstructions might not be clear and the VAE samples even less so, the autoencoder reconstructions should be very clear.
+2. Here is a sample reconstruction from Beta-VAE at the end of training. The other networks may have variations but should look similar: 
+
+<img src="./vae/sample_images/epoch_19_samples.png" width="400px"><img>
 
 
 ## Task 3: (Extra Credit) Diffusion Models (30 points)
