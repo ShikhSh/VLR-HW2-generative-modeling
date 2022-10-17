@@ -191,9 +191,9 @@ The algorithm should then look something like:
 ### 3.2 Denoising Diffusion Implicit Model (15 points)
 The issue with DDPM is that we need to loop over all the timestamps sequentially, which is not very efficient. Denoising Diffusion Implicit Model (DDIM) samples a small number of timesteps $S$ from the total timestamps. We can do this sampling evenly across the $[1, T]$ range with a step-size of $\frac{T}{S}$ to get a total of S timesteps $[\tau_1, \tau_2, ..., \tau_{S}]$. 
 
-$$q(x_{\tau_{i - 1}} | x_{\tau_t}, x_0) = \mathcal{N}(x_{\tau_{i-1}}; \sqrt{\bar{\alpha_{t-1}}} x_0 + \sqrt{1 - \bar{\alpha_{t-1}} - \sigma_{t}^2} \epsilon_t; \sigma_t^2 \mathcal{I}) $$
+$$q(x_{\tau_{i - 1}} | x_{\tau_t}, x_0) = \mathcal{N}(x_{\tau_{i-1}}; \sqrt{\bar{\alpha_{\tau_{i - 1}}}} x_0 + \sqrt{1 - \bar{\alpha_{\tau_{i - 1}}} - \sigma_{\tau_{i}}^2} \epsilon_{\tau_{i}}; \sigma_{\tau_{i - 1}}^2 \mathcal{I}) $$
 
-$$\sigma_{t}^2 = \eta \tilde{\beta_t}, \hspace{10px} \tilde{\beta_t} = \frac{1 - \bar{\alpha_{t - 1}}}{1 - \bar\alpha_t} \beta_t$$
+$$\sigma_{\tau_{i}}^2 = \eta \tilde{\beta_{\tau_{i}}}, \hspace{10px} \tilde{\beta_{\tau_{i}}} = \frac{1 - \bar{\alpha_{\tau_{i - 1}}}}{1 - \bar\alpha_{\tau_{i}}} \beta_{\tau_{i - 1}}$$
 
 where $\eta$ is a hyperparameter along with $S$. Here $q$ represents the distribution from which we can sample to get $x_{\tau_{i - 1}}$.
 
